@@ -43,3 +43,12 @@ class Calc
 
 IT will look at all the functions and classes/methods in `src` that have the `\IT\Should`
 attributes, then call each one, checking the output is as expected.
+
+## Architecture
+
+Main interfaces:
+
+- Locator (finds inline tests in code, via reflection).
+- Executor (runs the tests and captures results).
+- Comparator (compares actual vs expected, producing human-friendly diffs).
+- Reporter (outputs results, exit with non-zero if any failure).
