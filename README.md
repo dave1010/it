@@ -10,6 +10,17 @@ composer require --dev dave1010/it-should
 
 ## Usage
 
+### Console command
+
+Install dependencies and run the built-in expectations:
+
+```bash
+composer install
+php bin/console
+```
+
+Run `php bin/console help` for available options.
+
 ### Writing tests
 
 Write tests inline on functions and methods with the `\IT\Should` annotation.
