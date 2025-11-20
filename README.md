@@ -15,10 +15,10 @@ composer require --dev dave1010/it-should
 Run inline tests under one or more files/directories:
 
 ```bash
-php bin/it src
+./vendor/bin/it src
 ```
 
-When installed as a dependency, use `./vendor/bin/it`. Run `php bin/it help` for available options.
+Run `./vendor/bin/it help` for available options.
 
 ### Writing tests
 
@@ -41,6 +41,10 @@ Method support is planned; the current implementation executes inline tests on f
 
 IT will look at all the functions and classes/methods in `src` that have the `\IT\Should`
 attributes, then call each one, checking the output is as expected.
+
+## Development
+
+For contributors working on this repository, the console command lives at `bin/it`.
 
 ## Architecture
 

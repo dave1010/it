@@ -1,6 +1,6 @@
 {
     "name": "dave1010/it-should",
-    "description": "A minimal project providing a Should object and console command.",
+    "description": "IT: Inline Test for PHP",
     "require": {
         "php": "^8.4",
         "composer-runtime-api": "^2.2"

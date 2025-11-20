@@ -13,7 +13,8 @@ function add(int $a, int $b): int
 }
 
 #[Should(return: 'Hello, Dave', with: ['Dave'])]
-function greet(string $name): string
+#[Should(return: 'Hello, World')]
+function greet(string $name = 'World'): string
 {
     return "Hello, {$name}";
 }

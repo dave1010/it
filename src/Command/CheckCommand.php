@@ -161,7 +161,6 @@ class CheckCommand
             '',
             'Scans PHP files for functions annotated with the #[\\IT\\Should] attribute and executes them.',
             'Provide one or more files or directories to evaluate.',
-            'Use "vendor/bin/it" when installed as a dependency.',
             '  -h, --help, help   Show this help message',
         ];
 
