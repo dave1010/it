@@ -38,7 +38,7 @@ class CheckCommand
     private function printHelp(): void
     {
         $help = [
-            'Usage: php bin/console [command]',
+            'Usage: php bin/it [command]',
             '',
             'Commands:',
             '  should   Run built-in Should expectations (default)',

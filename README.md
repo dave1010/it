@@ -12,14 +12,13 @@ composer require --dev dave1010/it-should
 
 ### Console command
 
-Install dependencies and run the built-in expectations:
+Run the built-in expectations:
 
 ```bash
-composer install
-php bin/console
+php bin/it
 ```
 
-Run `php bin/console help` for available options.
+Run `php bin/it help` for available options.
 
 ### Writing tests
 
