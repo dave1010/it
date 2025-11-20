@@ -2,12 +2,17 @@
     "name": "dave1010/it-should",
     "description": "A minimal project providing a Should object and console command.",
     "require": {
-        "php": "^8.5",
+        "php": "^8.4",
         "composer-runtime-api": "^2.2"
     },
     "autoload": {
         "psr-4": {
             "IT\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Example\\": "examples/"
         }
     },
     "bin": [
