@@ -10,6 +10,16 @@ composer require --dev dave1010/it-should
 
 ## Usage
 
+### Console command
+
+Run inline tests under one or more files/directories:
+
+```bash
+./vendor/bin/it src
+```
+
+Run `./vendor/bin/it help` for available options.
+
 ### Writing tests
 
 Write tests inline on functions and methods with the `\IT\Should` annotation.
@@ -21,19 +31,7 @@ function add(int $a, int $b): int {
 }
 ```
 
-IT will automatically instantiate objects when testing instance methods. Optionally pass constructor arguments in the `constructed` parameter.
-
-Thanks to PHP 8.5's closures in constant expressions, you can pass a callable to create the system under test:
-
-```php
-#[\IT\Should(return: 4, with: [2, 2], it: static function () { return new Calc; })]
-class Calc
-{
-    function add(int $a, int $b): int {
-        return $a + $b;
-    }
-}
-```
+Method support is planned; the current implementation executes inline tests on functions marked with `#[\IT\Should]`.
 
 ### Running tests
 
@@ -43,6 +41,12 @@ class Calc
 
 IT will look at all the functions and classes/methods in `src` that have the `\IT\Should`
 attributes, then call each one, checking the output is as expected.
+
+## Development
+
+For contributors working on this repository, the console command lives at `bin/it`.
+Run `composer install` after cloning to generate the local `vendor/autoload.php` so
+`bin/it` and the bundled `examples` work without additional setup.
 
 ## Architecture
 

@@ -1,0 +1,23 @@
+{
+    "name": "dave1010/it-should",
+    "description": "IT: Inline Test for PHP",
+    "require": {
+        "php": "^8.4",
+        "composer-runtime-api": "^2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "IT\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Example\\": "examples/"
+        }
+    },
+    "bin": [
+        "bin/it"
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
