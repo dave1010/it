@@ -62,7 +62,7 @@ class CheckCommand
         $help = [
             'Usage: php bin/it <file|directory> [<file|directory> ...]',
             '',
-            'Scans PHP files for functions annotated with the #[\\IT\\Should] attribute and executes them.',
+            'Scans PHP files for functions and methods annotated with the #[\\IT\\Should] attribute and executes them.',
             'Provide one or more files or directories to evaluate.',
             '  -h, --help, help   Show this help message',
         ];
