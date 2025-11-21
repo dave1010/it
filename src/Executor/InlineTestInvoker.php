@@ -4,32 +4,12 @@ declare(strict_types=1);
 
 namespace IT\Executor;
 
-use IT\Comparator\ComparatorInterface;
 use IT\Model\InlineTest;
-use IT\Model\TestResult;
 use ReflectionMethod;
 
-class FunctionExecutor implements ExecutorInterface
+class InlineTestInvoker
 {
-    public function __construct(private readonly ComparatorInterface $comparator)
-    {
-    }
-
-    public function execute(iterable $tests): array
-    {
-        $results = [];
-
-        foreach ($tests as $test) {
-            $actual = $this->invoke($test);
-            $passed = $this->comparator->isEqual($test->getExpected(), $actual);
-
-            $results[] = new TestResult($test, $actual, $passed);
-        }
-
-        return $results;
-    }
-
-    private function invoke(InlineTest $test): mixed
+    public function invoke(InlineTest $test): mixed
     {
         $reflection = $test->getReflection();
 
