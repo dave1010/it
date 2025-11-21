@@ -12,6 +12,10 @@ class Should
     public function __construct(
         public mixed $return,
         public array $given = [],
+        /**
+         * @var null|callable
+         */
+        public mixed $with = null,
     ) {
     }
 }

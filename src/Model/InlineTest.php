@@ -4,21 +4,23 @@ declare(strict_types=1);
 
 namespace IT\Model;
 
-use ReflectionFunction;
+use ReflectionFunctionAbstract;
 
 class InlineTest
 {
     public function __construct(
-        private readonly string $functionName,
+        private readonly string $callableName,
         private readonly array $arguments,
         private readonly mixed $expected,
-        private readonly ReflectionFunction $reflection,
+        private readonly ReflectionFunctionAbstract $reflection,
+        /** @var null|callable */
+        private readonly mixed $with = null,
     ) {
     }
 
-    public function getFunctionName(): string
+    public function getCallableName(): string
     {
-        return $this->functionName;
+        return $this->callableName;
     }
 
     public function getArguments(): array
@@ -31,8 +33,13 @@ class InlineTest
         return $this->expected;
     }
 
-    public function getReflection(): ReflectionFunction
+    public function getReflection(): ReflectionFunctionAbstract
     {
         return $this->reflection;
+    }
+
+    public function getWith(): ?callable
+    {
+        return $this->with;
     }
 }

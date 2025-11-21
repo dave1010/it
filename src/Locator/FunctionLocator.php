@@ -10,6 +10,7 @@ use IT\Should;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use ReflectionFunction;
+use ReflectionMethod;
 use SplFileInfo;
 
 class FunctionLocator implements LocatorInterface
@@ -86,6 +87,17 @@ class FunctionLocator implements LocatorInterface
      */
     private function collectInlineTests(): array
     {
+        return [
+            ...$this->collectFunctionTests(),
+            ...$this->collectMethodTests(),
+        ];
+    }
+
+    /**
+     * @return list<InlineTest>
+     */
+    private function collectFunctionTests(): array
+    {
         $tests = [];
         $userFunctions = get_defined_functions()['user'] ?? [];
 
@@ -102,7 +114,44 @@ class FunctionLocator implements LocatorInterface
                     $test->given,
                     $test->return,
                     $reflection,
+                    $test->with,
                 );
+            }
+        }
+
+        return $tests;
+    }
+
+    /**
+     * @return list<InlineTest>
+     */
+    private function collectMethodTests(): array
+    {
+        $tests = [];
+        $classes = get_declared_classes();
+
+        foreach ($classes as $className) {
+            $reflectionClass = new \ReflectionClass($className);
+
+            foreach ($reflectionClass->getMethods() as $reflectionMethod) {
+                if ($reflectionMethod->getDeclaringClass()->getName() !== $className) {
+                    continue;
+                }
+
+                $attributes = $reflectionMethod->getAttributes(Should::class);
+
+                foreach ($attributes as $attribute) {
+                    /** @var Should $test */
+                    $test = $attribute->newInstance();
+
+                    $tests[] = new InlineTest(
+                        $className . '::' . $reflectionMethod->getName(),
+                        $test->given,
+                        $test->return,
+                        $reflectionMethod,
+                        $test->with,
+                    );
+                }
             }
         }
 

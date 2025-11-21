@@ -34,7 +34,25 @@ function add(int $a, int $b): int {
 Use the `given` parameter to pass the arguments that should be provided to your function or method
 when executing the inline test (for example: "it should return 4 given 2, 2").
 
-Method support is planned; the current implementation executes inline tests on functions marked with `#[\IT\Should]`.
+For methods, IT will instantiate a new object when the method is non-static (without handling constructor arguments). You can
+override this by providing a callable in the optional `with` parameter to create the system under test:
+
+```php
+class Incrementer
+{
+    public function __construct(private int $step)
+    {
+    }
+
+    #[\IT\Should(return: 2, given: [1], with: static fn () => new Incrementer(1))]
+    public function add(int $value): int
+    {
+        return $value + $this->step;
+    }
+}
+```
+
+Any callable is accepted here, whether a static closure (possible in PHP 8.5 attributes) or a class factory method.
 
 ### Running tests
 

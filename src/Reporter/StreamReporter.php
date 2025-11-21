@@ -52,7 +52,7 @@ class StreamReporter implements ReporterInterface
     {
         return sprintf(
             '%s(%s)',
-            $test->getFunctionName(),
+            $test->getCallableName(),
             implode(', ', array_map(fn ($value) => $this->describe($value), $test->getArguments())),
         );
     }
