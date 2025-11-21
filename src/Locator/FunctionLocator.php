@@ -99,7 +99,7 @@ class FunctionLocator implements LocatorInterface
 
                 $tests[] = new InlineTest(
                     $functionName,
-                    $test->with,
+                    $test->given,
                     $test->return,
                     $reflection,
                 );

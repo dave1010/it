@@ -25,11 +25,14 @@ Run `./vendor/bin/it help` for available options.
 Write tests inline on functions and methods with the `\IT\Should` annotation.
 
 ```php
-#[\IT\Should(return: 4, with: [2, 2])]
+#[\IT\Should(return: 4, given: [2, 2])]
 function add(int $a, int $b): int {
     return $a + $b;
 }
 ```
+
+Use the `given` parameter to pass the arguments that should be provided to your function or method
+when executing the inline test (for example: "it should return 4 given 2, 2").
 
 Method support is planned; the current implementation executes inline tests on functions marked with `#[\IT\Should]`.
 
