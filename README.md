@@ -1,10 +1,11 @@
 # IT
 
-IT: Inline Test for PHP
+IT: Inline Test for PHP, designed for PHP 8
+5.
 
 ## Install
 
-```php
+```bash
 composer require --dev dave1010/it-should
 ```
 
@@ -32,7 +33,7 @@ function add(int $a, int $b): int {
 ```
 
 Use the `given` parameter to pass the arguments that should be provided to your function or method
-when executing the inline test (for example: "it should return 4 given 2, 2").
+when executing the inline test.
 
 For methods, IT will instantiate a new object when the method is non-static (without handling constructor arguments). You can
 override this by providing a callable in the optional `with` parameter to create the system under test:
