@@ -47,7 +47,7 @@ attributes, then call each one, checking the output is as expected.
 
 ## Development
 
-For contributors working on this repository, the console command lives at `bin/it`.
+For contributors working on this repository, the console command lives at `bin/it`, *Not* in `vendor`.
 Run `composer install` after cloning to generate the local `vendor/autoload.php` so
 `bin/it` and the bundled `examples` work without additional setup.
 
