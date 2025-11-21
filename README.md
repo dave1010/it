@@ -51,6 +51,12 @@ For contributors working on this repository, the console command lives at `bin/i
 Run `composer install` after cloning to generate the local `vendor/autoload.php` so
 `bin/it` and the bundled `examples` work without additional setup.
 
+The examples and CI workflow currently run against PHP 8.5; you can mirror this locally with:
+
+```bash
+php bin/it examples
+```
+
 ## Architecture
 
 Main interfaces:
