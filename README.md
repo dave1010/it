@@ -44,7 +44,7 @@ class Incrementer
     {
     }
 
-    #[\IT\Should(return: 2, given: [1], with: static fn () => new Incrementer(1))]
+    #[\IT\Should(return: 2, given: [1], with: static function () { return new Incrementer(1); })]
     public function add(int $value): int
     {
         return $value + $this->step;
