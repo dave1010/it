@@ -11,7 +11,7 @@ class Should
 {
     public function __construct(
         public mixed $return,
-        public array $with = [],
+        public array $given = [],
     ) {
     }
 }
