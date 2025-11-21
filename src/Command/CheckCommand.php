@@ -7,9 +7,12 @@ namespace IT\Command;
 use IT\Comparator\EqualityComparator;
 use IT\Exception\ShouldException;
 use IT\Executor\ExecutorInterface;
-use IT\Executor\FunctionExecutor;
-use IT\Locator\FunctionLocator;
+use IT\Executor\InlineTestExecutor;
+use IT\Executor\InlineTestInvoker;
+use IT\Locator\InlineTestFinder;
+use IT\Locator\InlineTestLocator;
 use IT\Locator\LocatorInterface;
+use IT\Locator\PhpFileFinder;
 use IT\Reporter\ReporterInterface;
 use IT\Reporter\StreamReporter;
 
@@ -24,8 +27,8 @@ class CheckCommand
         ?ExecutorInterface $executor = null,
         ?ReporterInterface $reporter = null,
     ) {
-        $this->locator = $locator ?? new FunctionLocator();
-        $this->executor = $executor ?? new FunctionExecutor(new EqualityComparator());
+        $this->locator = $locator ?? new InlineTestLocator(new PhpFileFinder(), new InlineTestFinder());
+        $this->executor = $executor ?? new InlineTestExecutor(new EqualityComparator(), new InlineTestInvoker());
         $this->reporter = $reporter ?? new StreamReporter();
     }
 
