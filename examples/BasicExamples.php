@@ -39,8 +39,13 @@ class Incrementer
         return new self(1);
     }
 
-    #[Should(return: 2, given: [1], with: self::forStep1(...))]
-    #[Should(return: 5, given: [4], with: static function () { return new self(1); })]
+    public static function makeForStep1(): self
+    {
+        return new self(1);
+    }
+
+    #[Should(return: 2, given: [1], with: [self::class, 'forStep1'])]
+    #[Should(return: 5, given: [4], with: [self::class, 'makeForStep1'])]
     public function add(int $value): int
     {
         return $value + $this->step;
